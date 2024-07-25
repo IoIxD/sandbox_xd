@@ -16,10 +16,10 @@ async fn main() {
     tokio::spawn(async move {
         let mut time = SystemTime::now();
         loop {
-            if time.elapsed().unwrap().as_secs_f64() >= 1.0 / 480.0 {
-                s1.step();
-                time = SystemTime::now();
-            }
+            //if time.elapsed().unwrap().as_secs_f64() >= 1.0 / 480.0 {
+            s1.step();
+            time = SystemTime::now();
+            //}
         }
     });
 
@@ -56,17 +56,15 @@ async fn main() {
         d.clear_background(Color::WHITE);
 
         s2.for_each_cube(|x, y, width, height, rand| {
+            if rand == 0 {
+                return;
+            }
             d.draw_rectangle(
                 x as i32 - last_x as i32,
                 y as i32 - last_y as i32,
                 width as i32,
                 height as i32,
-                Color::new(
-                    (rand ^ 0xFF0000) as u8,
-                    (rand ^ 0x00FF00) as u8,
-                    (rand ^ 0x0000FF) as u8,
-                    255,
-                ),
+                Color::new((rand ^ 0xFF0000) as u8, 0, 0, 255),
             );
         })
     }

@@ -120,8 +120,8 @@ impl State {
             .translation(vector![x, y])
             .build();
 
-        rigid_body.wake_up(false);
-        let mut collider = ColliderBuilder::cuboid(1.0, 1.0).restitution(0.0).build();
+        rigid_body.wake_up(true);
+        let mut collider = ColliderBuilder::cuboid(1.0, 1.0).restitution(-1.0).build();
 
         collider.user_data = SystemTime::UNIX_EPOCH.elapsed().unwrap().as_nanos();
 
