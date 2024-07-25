@@ -1,0 +1,15 @@
+[package]
+name = "sandbox_xd"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+parking_lot = "0.12.3"
+rapier2d = {"version" = "0.22.0"}
+raylib = "5.0.1"
+tokio = { version = "1.39.1", features = ["full"] }
+
+# Add this to your Cargo.toml
+[profile.release]
+codegen-units = 1
+lto = true
